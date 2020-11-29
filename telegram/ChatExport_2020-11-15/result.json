@@ -1,5 +1,5 @@
-{
- "name": "Marc",
+
+ {"name": "Marc",
  "type": "personal_chat",
  "id": 4957211864,
  "messages": [
@@ -131,5 +131,35 @@
    "from_id": 4555368440,
    "text": "Avec mes petits loups ❤️"
   },
- ]
+  {
+   "id": 680427,
+   "type": "message",
+   "date": "2020-07-18T10:49:33",
+   "from": "Marc Negre",
+   "from_id": 4957211864,
+   "text": "Ohlala merci beaucoup pour tes messages Béné trop chouette !!! Je te rep après la répétition, qui va commencer !! P'tit dej royal ici aussi (mais dans un autre style hahaha) !!"
+  },
+  {
+   "id": 680428,
+   "type": "message",
+   "date": "2020-07-18T10:49:50",
+   "from": "Marc Negre",
+   "from_id": 4957211864,
+   "photo": "photos/photo_3@18-07-2020_10-49-50.jpg",
+   "width": 960,
+   "height": 1280,
+   "text": ""
+  },
+  {
+   "id": 680429,
+   "type": "message",
+   "date": "2020-07-18T10:49:50",
+   "from": "Marc Negre",
+   "from_id": 4957211864,
+   "photo": "photos/photo_4@18-07-2020_10-49-50.jpg",
+   "width": 1280,
+   "height": 960,
+   "text": ""
+  }
+  ]
 }
