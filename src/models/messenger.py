@@ -79,8 +79,11 @@ class MessengerModel(BaseChatAppModel):
             else:
                 photo = []
 
+            # deal with reactions
+            reactions = [r.get("reaction") for r in message.get("reactions", [])]
+
             new_row = {'source': "Messenger", 'datetime': timestamp,
-                       'sender': sender, 'message': new_text, 'path': photo}
+                       'sender': sender, 'message': new_text, 'path': photo, 'reactions': reactions}
             concatenated_table_messenger = concatenated_table_messenger.append(
                 new_row, ignore_index=True)
 

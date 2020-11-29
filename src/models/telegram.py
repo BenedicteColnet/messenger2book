@@ -66,7 +66,7 @@ class TelegramModel(BaseChatAppModel):
             new_text = new_text.replace("\n", "\\ ")
 
             new_row = {'source': "Telegram",
-                       'datetime': element["date"], 'sender': sender, 'message': new_text, 'path': photo}
+                       'datetime': element["date"], 'sender': sender, 'message': new_text, 'path': photo, 'reactions': []}
             concatenated_table = concatenated_table.append(
                 new_row, ignore_index=True)
         return concatenated_table
