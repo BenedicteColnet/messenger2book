@@ -90,8 +90,8 @@ class MessengerModel(BaseChatAppModel):
         return concatenated_table_messenger
 
     def _reformat_image_path(self, uri):
-        print(uri, re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).jpg", uri))
-        res = re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).jpg", uri)
+        print(uri, re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).[(jpg)|(png)]", uri))
+        res = re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).[(jpg)|(png)]", uri)
         file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}_{res.group(2)}.jpg"
         file_location = os.path.join(MESSENGER_PHOTOS_FOLDER, file_name)
         return file_location
