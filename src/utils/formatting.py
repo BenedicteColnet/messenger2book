@@ -47,7 +47,7 @@ def left_formating_with_bubbles(df):
         df = pd.DataFrame(df).T
     
     table_rows = df.apply(
-        lambda x: f'{x.message}\\\\',  # format for left rows
+        lambda x: f'{x.message}\\',  # format for left rows
         axis=1
     ).tolist()
     
@@ -78,9 +78,10 @@ def right_formating(df):
 def right_formating_with_bubbles(df):
     if isinstance(df, pd.Series):
         df = pd.DataFrame(df).T
+
     
     table_rows = df.apply(
-        lambda x: f'{x.message}\\\\',  # format for left rows
+        lambda x: f'{x.message}\\', 
         axis=1
     ).tolist()
     
@@ -88,6 +89,7 @@ def right_formating_with_bubbles(df):
         ['\\begin{rightbubbles}'] +
         table_rows
         + ['\\end{rightbubbles}'])
+
     return text
 
 # By default it will apply bubbles style

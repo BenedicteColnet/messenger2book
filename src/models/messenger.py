@@ -3,10 +3,11 @@ import json
 import os
 import re
 import pandas as pd
+import emoji
 
 from src.models import BaseChatAppModel
 
-MESSENGER_PHOTOS_FOLDER = "data/messenger/photos"
+MESSENGER_PHOTOS_FOLDER = "../data/messenger/photos"
 
 
 class MessengerModel(BaseChatAppModel):
@@ -61,20 +62,24 @@ class MessengerModel(BaseChatAppModel):
                 text = ""
 
             # deal with emoji
-            new_text = ""
-            for c in text:
                 # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
-                if True:
-                    new_text = new_text + c
-                else:
-                    # Change for f string instead of [2:]
-                    new_text = new_text + \
-                        "\emoji[ios]{"+f"{hex(ord(c))[2:]}"+"}"
+            new_text = "".join(f"\emoji[ios]{{{ord(c):X}}}" if c in emoji.UNICODE_EMOJI else c for c in text) 
+
+            # new_text = ""
+            # for c in text:
+            #     # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
+            #     if True:
+            #         new_text = new_text + c
+            #     else:
+            #         # Change for f string instead of [2:]
+            #         new_text = new_text + \
+            #             "\emoji[ios]{"+f"{hex(ord(c))[2:]}"+"}"
 
             if message.get('photos') is not None:
                 photo = []
                 for p in message['photos']:
-                    photo.append(self._reformat_image_path(p['uri']))
+                    #photo.append(self._reformat_image_path(p['uri']))
+                    photo.append(p['uri'])
 
             else:
                 photo = []

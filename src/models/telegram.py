@@ -1,10 +1,11 @@
 import pandas as pd
+import emoji
 
 from src.models import BaseChatAppModel
 from src.utils.formatting import process_for_latex
 
-# TODO: Remove the limit below
-MAX_NUMBER_MESSAGE = 15  # Maximum number of messages to keep
+TELEGRAM_PHOTOS_FOLDER = "../data/telegram/ChatExport_2020-11-15/"
+MAX_NUMBER_MESSAGE = 10000
 
 class TelegramModel(BaseChatAppModel):
     def _load_data(self, data_path):
@@ -32,9 +33,10 @@ class TelegramModel(BaseChatAppModel):
                 print("Error on sender on message number "+str(element))
                 break
 
-            # Deal with picture (apparently several pictures are send as several messages)
+            # Deal with picture (apparently several pictures are send as several messages) TODO: check it is true
             if 'photo' in element:
-                photo = element["photo"]
+                photo = [TELEGRAM_PHOTOS_FOLDER + element['photo']]
+                print(photo)
             else:
                 photo = []
 
@@ -50,14 +52,8 @@ class TelegramModel(BaseChatAppModel):
                 break
 
             # deal with emoji
-            new_text = ""
-            for c in text:
-                if True:  # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
-                    new_text = new_text + c
-                else:
-                    # Change for f string instead of [2:]
-                    new_text = new_text + \
-                        "\emoji[ios]{"+f"{hex(ord(c))[2:]}"+"}"
+                # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
+            new_text = "".join(f"\emoji[ios]{{{ord(c):X}}}" if c in emoji.UNICODE_EMOJI else c for c in text)  
 
             # deal with formatting
             new_text = process_for_latex(new_text)
@@ -70,3 +66,4 @@ class TelegramModel(BaseChatAppModel):
             concatenated_table = concatenated_table.append(
                 new_row, ignore_index=True)
         return concatenated_table
+
