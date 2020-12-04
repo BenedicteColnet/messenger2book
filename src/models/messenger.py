@@ -34,7 +34,7 @@ class MessengerModel(BaseChatAppModel):
         #raw_data_messenger = pd.read_json('messenger/inbox/marcnegre_hwizlpvhxw/message_1.json', lines=True)
         # raw_data_messenger.info()
         # raw_data_messenger.head()
-        for message in raw_data["messages"][1:3]:  # only 100 messages to test
+        for message in raw_data["messages"][1:100]:  # only 100 messages to test
 
             timestamp = message["timestamp_ms"] / 1000
             timestamp = datetime.datetime.fromtimestamp(
@@ -60,6 +60,11 @@ class MessengerModel(BaseChatAppModel):
                     'latin-1').decode('utf-8')  # I think better solution exist!
             else:
                 text = ""
+
+            # deal with & in latex
+            text = text.replace('&', '\\&')
+            # deal with #
+            text = text.replace('#', '\\#')
 
             # deal with emoji
                 # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
@@ -99,8 +104,10 @@ class MessengerModel(BaseChatAppModel):
         #res = re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).[(jpg)|(png)]", uri)
         res = re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).", uri)
         if 'png' in uri:
-            file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}_{res.group(2)}.png"
+            #file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}_{res.group(2)}.png"
+            file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}.png"
         else:
-            file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}_{res.group(2)}.jpg"
+            #file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}_{res.group(2)}.jpg"
+            file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}.jpg"
         file_location = os.path.join(MESSENGER_PHOTOS_FOLDER, file_name)
         return file_location
