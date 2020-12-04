@@ -5,7 +5,7 @@ from src.models import BaseChatAppModel
 from src.utils.formatting import process_for_latex
 
 TELEGRAM_PHOTOS_FOLDER = "../data/telegram/ChatExport_2020-11-15/"
-MAX_NUMBER_MESSAGE = 10000
+MAX_NUMBER_MESSAGE = 200
 
 class TelegramModel(BaseChatAppModel):
     def _load_data(self, data_path):
@@ -40,23 +40,48 @@ class TelegramModel(BaseChatAppModel):
             else:
                 photo = []
 
-            # deal with text that are list or hastag
+            # deal with text type
+            text = ""
+
+            # if a simple message (simplest case)
             if type(element["text"]) == str:
-                text = element["text"]
+                text = text + element["text"]
+
+            # else: browse messages
             elif type(element["text"]) == list:
-                text = element["text"][0]
-                if type(text) == dict:
-                    text = "\\" + element['text'][0]['text']
+                for message in element["text"]:
+                    if type(message) == str:
+                        text = text + message
+                    if type(message) == dict:
+                        if message["type"] == "italic":
+                            text = text + " \\textit{" + message['text']+"}"
+                        elif message["type"] == "bold":
+                            text = text + " \\textbf{" + message['text']+"}"
+                        elif message["type"] == "code":
+                            text = text + " \\texttt{" + message['text']+"}"
+                        elif message["type"] == "hashtag":
+                            text = text + " \\textbf{\# " + message['text'][1:]+"}"
+                        elif message["type"] == "link":
+                            text = text + " \\texttt{" + message['text']+"}"
+                        else:
+                            print("Missing type: "+message["type"])
+
+
             else:
                 print("Error in the type of text")
                 break
 
+            # deal with & 
+            text= text.replace('&', '\\&')
+
+            # deal with & 
+            text= text.replace('\n', '\\\\')
+
             # deal with emoji
-                # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
             new_text = "".join(f"\emoji[ios]{{{ord(c):X}}}" if c in emoji.UNICODE_EMOJI else c for c in text)  
 
             # deal with formatting
-            new_text = process_for_latex(new_text)
+            #new_text = process_for_latex(new_text)
 
             # replace \n with \\
             new_text = new_text.replace("\n", "\\ ")

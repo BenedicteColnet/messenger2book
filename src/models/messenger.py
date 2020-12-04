@@ -65,6 +65,8 @@ class MessengerModel(BaseChatAppModel):
             text = text.replace('&', '\\&')
             # deal with #
             text = text.replace('#', '\\#')
+            # deal with \n
+            text= text.replace('\n', '\\\\')
 
             # deal with emoji
                 # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
