@@ -8,6 +8,8 @@ import emoji
 from src.models import BaseChatAppModel
 
 MESSENGER_PHOTOS_FOLDER = "../data/messenger/photos"
+MESSENGER_GIFS_FOLDER = "../data/messenger/gifs_as_frame"
+MESSENGER_VIDEOS_FOLDER = "../data/messenger/videos_as_frame"
 
 
 class MessengerModel(BaseChatAppModel):
@@ -34,7 +36,7 @@ class MessengerModel(BaseChatAppModel):
         #raw_data_messenger = pd.read_json('messenger/inbox/marcnegre_hwizlpvhxw/message_1.json', lines=True)
         # raw_data_messenger.info()
         # raw_data_messenger.head()
-        for message in raw_data["messages"][1:100]:  # only 100 messages to test
+        for message in raw_data["messages"][1:20000]:  # only 100 messages to test
 
             timestamp = message["timestamp_ms"] / 1000
             timestamp = datetime.datetime.fromtimestamp(
@@ -67,6 +69,10 @@ class MessengerModel(BaseChatAppModel):
             text = text.replace('#', '\\#')
             # deal with \n
             text= text.replace('\n', '\\\\')
+            #deal with url
+            urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', text)
+            for url in urls:
+                text = text.replace(url, "\\texttt{"+url+"}")
 
             # deal with emoji
                 # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
@@ -91,15 +97,45 @@ class MessengerModel(BaseChatAppModel):
             else:
                 photo = []
 
+            gifs = []
+            if message.get('gifs') is not None:
+                for p in message['gifs']:
+                    gifs.append(self._reformat_gifs_path(p['uri']))
+
+            videos = []
+            if message.get('videos') is not None:
+                for p in message['videos']:
+                    videos.append(self._reformat_videos_path(p['uri']))
+
             # deal with reactions
             reactions = [r.get("reaction") for r in message.get("reactions", [])]
 
             new_row = {'source': "Messenger", 'datetime': timestamp,
-                       'sender': sender, 'message': new_text, 'path': photo, 'reactions': reactions}
+                       'sender': sender, 'message': new_text, 'path': photo, 'reactions': reactions, 'gifs' : gifs, 'videos' : videos}
             concatenated_table_messenger = concatenated_table_messenger.append(
                 new_row, ignore_index=True)
 
+
         return concatenated_table_messenger
+
+
+    def _reformat_videos_path(self, uri):
+        #print(uri, re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).[(jpg)|(png)]", uri))
+        #res = re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).[(jpg)|(png)]", uri)
+        res = re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).", uri)
+        #file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}_{res.group(2)}.png"
+        file_name = f"{res.group(1)}_{res.group(2)}.png"
+        file_location = os.path.join(MESSENGER_VIDEOS_FOLDER, file_name)
+        return file_location
+
+    def _reformat_gifs_path(self, uri):
+        #print(uri, re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).[(jpg)|(png)]", uri))
+        #res = re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).[(jpg)|(png)]", uri)
+        res = re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).", uri)
+        #file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}_{res.group(2)}.png"
+        file_name = f"{res.group(1)}_{res.group(2)}_{res.group(3)}_{res.group(4)}.png"
+        file_location = os.path.join(MESSENGER_GIFS_FOLDER, file_name)
+        return file_location
 
     def _reformat_image_path(self, uri):
         #print(uri, re.search("([0-9]*)_([0-9]*)_([0-9]*)_(.).[(jpg)|(png)]", uri))

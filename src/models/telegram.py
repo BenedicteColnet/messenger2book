@@ -5,7 +5,7 @@ from src.models import BaseChatAppModel
 from src.utils.formatting import process_for_latex
 
 TELEGRAM_PHOTOS_FOLDER = "../data/telegram/ChatExport_2020-11-15/"
-MAX_NUMBER_MESSAGE = 200
+MAX_NUMBER_MESSAGE = 10
 
 class TelegramModel(BaseChatAppModel):
     def _load_data(self, data_path):
@@ -36,9 +36,21 @@ class TelegramModel(BaseChatAppModel):
             # Deal with picture (apparently several pictures are send as several messages) TODO: check it is true
             if 'photo' in element:
                 photo = [TELEGRAM_PHOTOS_FOLDER + element['photo']]
-                print(photo)
+                #print(photo)
             else:
                 photo = []
+
+
+            gifs = []
+            # # naive add for video
+            # if 'thumbnail' in element:
+            #     thumbnail_name = element["thumbnail"]
+            #     if 'jpg' in thumbnail_name:
+            #         gifs.append(TELEGRAM_PHOTOS_FOLDER + thumbnail_name)
+            #         print(TELEGRAM_PHOTOS_FOLDER + element["thumbnail"])
+
+            videos = []
+
 
             # deal with text type
             text = ""
@@ -60,7 +72,7 @@ class TelegramModel(BaseChatAppModel):
                         elif message["type"] == "code":
                             text = text + " \\texttt{" + message['text']+"}"
                         elif message["type"] == "hashtag":
-                            text = text + " \\textbf{\# " + message['text'][1:]+"}"
+                            text = text + " \\texttt{{\#} " + message['text'][1:]+"}"
                         elif message["type"] == "link":
                             text = text + " \\texttt{" + message['text']+"}"
                         else:
@@ -74,7 +86,7 @@ class TelegramModel(BaseChatAppModel):
             # deal with & 
             text= text.replace('&', '\\&')
 
-            # deal with & 
+            # deal with \n
             text= text.replace('\n', '\\\\')
 
             # deal with emoji
@@ -87,7 +99,7 @@ class TelegramModel(BaseChatAppModel):
             new_text = new_text.replace("\n", "\\ ")
 
             new_row = {'source': "Telegram",
-                       'datetime': element["date"], 'sender': sender, 'message': new_text, 'path': photo, 'reactions': []}
+                       'datetime': element["date"], 'sender': sender, 'message': new_text, 'path': photo, 'reactions': [], 'gifs' : gifs, 'videos' : videos}
             concatenated_table = concatenated_table.append(
                 new_row, ignore_index=True)
         return concatenated_table
