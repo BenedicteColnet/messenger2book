@@ -5,7 +5,7 @@ from src.models import BaseChatAppModel
 from src.utils.formatting import process_for_latex
 
 TELEGRAM_PHOTOS_FOLDER = "../data/telegram/ChatExport_2020-11-15/"
-MAX_NUMBER_MESSAGE = 10
+MAX_NUMBER_MESSAGE = 10000
 
 class TelegramModel(BaseChatAppModel):
     def _load_data(self, data_path):
@@ -69,7 +69,7 @@ class TelegramModel(BaseChatAppModel):
                             text = text + " \\textit{" + message['text']+"}"
                         elif message["type"] == "bold":
                             text = text + " \\textbf{" + message['text']+"}"
-                        elif message["type"] == "code":
+                        elif message["type"] in ["code", "pre", "phone", "mention", "email"]:
                             text = text + " \\texttt{" + message['text']+"}"
                         elif message["type"] == "hashtag":
                             text = text + " \\texttt{{\#} " + message['text'][1:]+"}"
