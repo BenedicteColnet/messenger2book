@@ -5,12 +5,11 @@
 \usepackage{environ}
 \usepackage{xparse}
 
-
 %\usepackage{fontawesome} % for small logo
 
 \newlength{\bubblesep}
 \newlength{\bubblewidth}
-\setlength{\bubblesep}{0.2pt}
+\setlength{\bubblesep}{0.01pt}
 \AtBeginDocument{\setlength{\bubblewidth}{.80\textwidth}}
 
 % green is for right
@@ -18,13 +17,14 @@
 % but I changed it
 %\definecolor{bubblegreen}{RGB}{103,184,104}
 %\definecolor{bubblegray}{RGB}{241,240,240}
-\definecolor{bubblegreen}{RGB}{221,253,253}
+\definecolor{bubblegreen}{RGB}{229,252,252}
 \definecolor{bubblegray}{RGB}{231,239,239}
+
+\usepackage[export]{adjustbox} % max height and width for image
 
 
 % hour
 \definecolor{mygray}{gray}{0.5}
-
 
 %emoji
 \usepackage[ios,font=seguiemj.ttf]{emoji}
@@ -43,11 +43,10 @@
  top=20mm,
  }
 
-
 \newcommand{\bubble}[4]{%
   \tcbox[
     on line,
-    arc=4.5mm,
+    arc=1.5mm,
     colback=#1,
     colframe=#1,
     #2,
@@ -127,17 +126,24 @@
 %\fancyhead[CE,RO]{\thesection}
 
 \begin{document}
- 
-\foreach \m in {01,02,03,04,05,06,07,08,09,10,11,12}{%
-    \foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{%
-        \IfFileExists{sections/2020-\m-\d} {%
-            \input{sections/2020-\m-\d}%
-        }{%
-                % files does not exist, so nothing to do
-        }%
-    }%
-}%
 
+%\foreach \m in {01,02,03,04,05,06,07,08,09,10,11,12}{%
+ %   \foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{%
+  %      \IfFileExists{sections/2020-\m-\d} {%
+   %     	\input{sections/2020-\m-\d}%
+    %    }{%
+     %           % files does not exist, so nothing to do
+      %  }%
+    %}%
+%}%
 
+%\foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
+\foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
+	\IfFileExists{sections/2020-03-\d}{
+		\input{sections/2020-03-\d}%
+	}{
+           % files does not exist, so nothing to do
+     }%
+}
 
 \end{document}
