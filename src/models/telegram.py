@@ -1,11 +1,12 @@
 import pandas as pd
 import emoji
+import re
 
 from src.models import BaseChatAppModel
 from src.utils.formatting import process_for_latex
 
-TELEGRAM_PHOTOS_FOLDER = "../data/telegram/ChatExport_2020-11-15/"
-MAX_NUMBER_MESSAGE = 10000
+TELEGRAM_PHOTOS_FOLDER = "../data/telegram/ChatExport_2020-12-06/"
+MAX_NUMBER_MESSAGE = 100000000
 
 class TelegramModel(BaseChatAppModel):
     def _load_data(self, data_path):
@@ -23,7 +24,7 @@ class TelegramModel(BaseChatAppModel):
         concatenated_table = pd.DataFrame(concatenated_table)
 
         # Deal with telegram messages
-        for element in raw_data["messages"][1:MAX_NUMBER_MESSAGE]:
+        for element in raw_data["messages"][1:MAX_NUMBER_MESSAGE]: 
             # simplify sender
             if element["from"] == 'Marc Negre':
                 sender = "M"
@@ -42,12 +43,15 @@ class TelegramModel(BaseChatAppModel):
 
 
             gifs = []
-            # # naive add for video
-            # if 'thumbnail' in element:
-            #     thumbnail_name = element["thumbnail"]
-            #     if 'jpg' in thumbnail_name:
-            #         gifs.append(TELEGRAM_PHOTOS_FOLDER + thumbnail_name)
-            #         print(TELEGRAM_PHOTOS_FOLDER + element["thumbnail"])
+            # naive add for video
+            if 'thumbnail' in element:
+                 thumbnail_name = element["thumbnail"]
+                 if 'jpg' in thumbnail_name:
+                    if "tgs" in thumbnail_name:
+                        continue
+                    else:
+                     gifs.append(TELEGRAM_PHOTOS_FOLDER + thumbnail_name)
+                     print(TELEGRAM_PHOTOS_FOLDER + element["thumbnail"])
 
             videos = []
 
@@ -74,7 +78,8 @@ class TelegramModel(BaseChatAppModel):
                         elif message["type"] == "hashtag":
                             text = text + " \\texttt{{\#} " + message['text'][1:]+"}"
                         elif message["type"] == "link":
-                            text = text + " \\texttt{" + message['text']+"}"
+                            #text = text + " \\texttt{" + message['text']+"}"
+                            text = text + " \\texttt{LINK}"
                         else:
                             print("Missing type: "+message["type"])
 
@@ -84,10 +89,25 @@ class TelegramModel(BaseChatAppModel):
                 break
 
             # deal with & 
-            text= text.replace('&', '\\&')
+            text= text.replace('&', '\\&', 30)
+
+            # deal with % 
+            text= text.replace('%', '\\%', 30)
+
+            # deal with $
+            text= text.replace('$', '\\$', 30)
+            
+            # deal with ^ 
+            text= text.replace('^^', '$\wedge$ $\wedge$', 30)
+
+             # deal with _
+            text= text.replace('_', '\\_', 30)
+
+            # deal with #
+            # text= text.replace('#', '\\#', 30)
 
             # deal with \n
-            text= text.replace('\n', '\\\\')
+            text= text.replace('\n', '\\\\', 30)
 
             # deal with emoji
             new_text = "".join(f"\emoji[ios]{{{ord(c):X}}}" if c in emoji.UNICODE_EMOJI else c for c in text)  
@@ -99,7 +119,7 @@ class TelegramModel(BaseChatAppModel):
             new_text = new_text.replace("\n", "\\ ")
 
             new_row = {'source': "Telegram",
-                       'datetime': element["date"], 'sender': sender, 'message': new_text, 'path': photo, 'reactions': [], 'gifs' : gifs, 'videos' : videos}
+                       'datetime': element["date"], 'sender': sender, 'message': new_text, 'path': photo, 'reactions': "", 'gifs' : gifs, 'videos' : videos}
             concatenated_table = concatenated_table.append(
                 new_row, ignore_index=True)
         return concatenated_table

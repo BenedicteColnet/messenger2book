@@ -36,7 +36,7 @@ class MessengerModel(BaseChatAppModel):
         #raw_data_messenger = pd.read_json('messenger/inbox/marcnegre_hwizlpvhxw/message_1.json', lines=True)
         # raw_data_messenger.info()
         # raw_data_messenger.head()
-        for message in raw_data["messages"][1:20000]:  # only 100 messages to test
+        for message in raw_data["messages"][0:900000000]:  # only 100 messages to test
 
             timestamp = message["timestamp_ms"] / 1000
             timestamp = datetime.datetime.fromtimestamp(
@@ -65,15 +65,22 @@ class MessengerModel(BaseChatAppModel):
 
             # deal with & in latex
             text = text.replace('&', '\\&')
+            # deal with % in latex
+            text = text.replace('%', '\\%')
+            # deal with _
+            text= text.replace('_', '\\_', 30)
             # deal with #
             text = text.replace('#', '\\#')
             # deal with \n
             text= text.replace('\n', '\\\\')
+            # deal with $
+            text= text.replace('$', '\\$', 30)
+            # deal with ^ 
+            text= text.replace('^^', '$\wedge$ $\wedge$', 30)
             #deal with url
             urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', text)
             for url in urls:
-                text = text.replace(url, "\\texttt{"+url+"}")
-
+                text = text.replace(url, "\\texttt{"+url[1:40]+"[...]}")
             # deal with emoji
                 # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
             new_text = "".join(f"\emoji[ios]{{{ord(c):X}}}" if c in emoji.UNICODE_EMOJI else c for c in text) 
@@ -93,14 +100,22 @@ class MessengerModel(BaseChatAppModel):
                 for p in message['photos']:
                     photo.append(self._reformat_image_path(p['uri']))
                     #photo.append(p['uri'])
-
             else:
                 photo = []
 
             gifs = []
+
             if message.get('gifs') is not None:
                 for p in message['gifs']:
-                    gifs.append(self._reformat_gifs_path(p['uri']))
+                    gifs.append(self._reformat_image_path(p['uri']))
+                    
+
+            # # put sticker with gifs
+            # if message.get('sticker') is not None:
+            #     for p in message['sticker']:
+            #         print(type(p))
+            #         path_to_sticker = "../data/messenger/"+str(p['uri'])
+            #         gifs.append(path_to_sticker)
 
             videos = []
             if message.get('videos') is not None:
@@ -108,7 +123,16 @@ class MessengerModel(BaseChatAppModel):
                     videos.append(self._reformat_videos_path(p['uri']))
 
             # deal with reactions
-            reactions = [r.get("reaction") for r in message.get("reactions", [])]
+            #reactions = [r.get("reaction") for r in message.get("reactions", [])]
+            reactions = []
+            if message.get('reactions') is not None:
+            	react = (message["reactions"][0]["reaction"]).encode('latin-1').decode('raw_unicode_escape').encode(
+                    'latin-1').decode('utf-8')
+            	new_react = "".join(f"\emoji[ios]{{{ord(c):X}}}" if c in emoji.UNICODE_EMOJI else c for c in react)
+            	reactions.append(new_react)
+            	
+
+
 
             new_row = {'source': "Messenger", 'datetime': timestamp,
                        'sender': sender, 'message': new_text, 'path': photo, 'reactions': reactions, 'gifs' : gifs, 'videos' : videos}

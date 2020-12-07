@@ -22,7 +22,7 @@ def add_timing_to_df(concatenated_table):
         lambda x: x.strftime("%H:%M"))
 
     # add boolean colum specifying who is the "right" (as opposed to "left") sender
-    right_sender = concatenated_table['sender'].unique()[0]  # modify here
+    right_sender = "M"  # Hard coded for Marc
     concatenated_table['right'] = (
         concatenated_table['sender'] == right_sender)
 
