@@ -80,7 +80,7 @@ class MessengerModel(BaseChatAppModel):
             #deal with url
             urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', text)
             for url in urls:
-                text = text.replace(url, "\\texttt{"+url[1:40]+"[...]}")
+                text = text.replace(url, "\\texttt{"+url[1:30]+"...}")
             # deal with emoji
                 # TODO: fix this undefined emoji: "not(c in emoji.UNICODE_EMOJI):"
             new_text = "".join(f"\emoji[ios]{{{ord(c):X}}}" if c in emoji.UNICODE_EMOJI else c for c in text) 
