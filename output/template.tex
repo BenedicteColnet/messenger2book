@@ -1,55 +1,50 @@
-\documentclass[a4paper,10pt,twoside]{book}
+\documentclass[a5paper,10pt,twoside]{book}
 \usepackage[many]{tcolorbox}
 \usepackage{xcolor}
 \usepackage{varwidth}
 \usepackage{environ}
 \usepackage{xparse}
 
-%\usepackage{fontawesome} % for small logo
-
 \newlength{\bubblesep}
 \newlength{\bubblewidth}
-\setlength{\bubblesep}{0.01pt}
-\AtBeginDocument{\setlength{\bubblewidth}{.80\textwidth}}
+\setlength{\bubblesep}{2pt}
+\AtBeginDocument{\setlength{\bubblewidth}{.75\textwidth}}
 
 % green is for right
 % gray for left
 % but I changed it
 %\definecolor{bubblegreen}{RGB}{103,184,104}
 %\definecolor{bubblegray}{RGB}{241,240,240}
-\definecolor{bubblegreen}{RGB}{229,252,252}
+\definecolor{bubblegreen}{RGB}{0,150,255}
 \definecolor{bubblegray}{RGB}{231,239,239}
 
-\usepackage[export]{adjustbox} % max height and width for image
-
-
-% hour
-\definecolor{mygray}{gray}{0.5}
 
 %emoji
-\usepackage[ios,font=seguiemj.ttf]{emoji}
+\usepackage[android,font=seguiemj.ttf]{emoji}
 \usepackage{fontspec}
 
 % force picture to be where we put them
 \usepackage{here}
 
 % put date in margin
-\usepackage{marginnote} % finally not used
-\usepackage{geometry}
- \geometry{
- a4paper,
- total={170mm,257mm},
- left=20mm,
- top=20mm,
- }
+\usepackage{marginnote}
+\usepackage[top=1.5cm, bottom=1.5cm, outer=1.2cm, inner=1.2cm, heightrounded, marginparwidth=1.5cm, marginparsep=0.5cm]{geometry}
+
+\tcbuselibrary{breakable}
+\makeatletter
+\def\tcb@parbox@use@false{%
+  \def\@parboxrestore{\linewidth\hsize\let\@parboxrestore=\tcb@parboxrestore}%
+}
+\makeatother
 
 \newcommand{\bubble}[4]{%
   \tcbox[
     on line,
-    arc=1.5mm,
+    arc=3.5mm,
     colback=#1,
     colframe=#1,
     #2,
+    top=3pt,left=5pt,right=5pt,bottom=3pt
   ]{\color{#3}\begin{varwidth}{\bubblewidth}#4\end{varwidth}}%
 }
 
@@ -65,7 +60,7 @@
   \seq_set_split:NnV \l__ooker_bubbles_seq { \par } \BODY
   \int_compare:nTF { \seq_count:N \l__ooker_bubbles_seq < 2 }
    {
-    \bubble{bubblegreen}{rounded~corners}{black}{\BODY}\par
+    \bubble{bubblegreen}{rounded~corners}{white}{\BODY}\par
    }
    {
     \seq_pop_left:NN \l__ooker_bubbles_seq \l__ooker_bubbles_first_tl
@@ -77,7 +72,6 @@
      {
       \bubble{bubblegreen}{sharp~corners=east}{black}{##1}
       \par\nointerlineskip
-      \addvspace{\bubblesep}
      }
     \bubble{bubblegreen}{sharp~corners=northeast}{black}{\l__ooker_bubbles_last_tl}
     \par
@@ -112,6 +106,8 @@
 \ExplSyntaxOff
 
 
+
+
 % format the section
 \usepackage{titlesec}
 \titleformat{\section}
@@ -127,23 +123,23 @@
 
 \begin{document}
 
-%\foreach \m in {01,02,03,04,05,06,07,08,09,10,11,12}{%
- %   \foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{%
-  %      \IfFileExists{sections/2020-\m-\d} {%
-   %     	\input{sections/2020-\m-\d}%
-    %    }{%
-     %           % files does not exist, so nothing to do
-      %  }%
-    %}%
-%}%
+ \begin{leftbubbles} 1 \\2 \\3 \\4 \\5 \\6  \hspace{0.5cm}\hfill{\textcolor{mygray}{{\footnotesize 09:01}}} \end{leftbubbles} 
+ \begin{leftbubbles} 1 \\2 \\3 \\4 \\5 \\6  \hspace{0.5cm}\hfill{\textcolor{mygray}{{\footnotesize 09:01}}} \end{leftbubbles} 
+ \begin{leftbubbles} 1 \\2 \\3 \\4 \\5 \\6  \hspace{0.5cm}\hfill{\textcolor{mygray}{{\footnotesize 09:01}}} \end{leftbubbles} 
+ \begin{leftbubbles} 1 \\2 \\3 \\4 \\5 \\6  \hspace{0.5cm}\hfill{\textcolor{mygray}{{\footnotesize 09:01}}} \end{leftbubbles} 
+ 
 
-%\foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
-\foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
-	\IfFileExists{sections/2020-03-\d}{
-		\input{sections/2020-03-\d}%
-	}{
-           % files does not exist, so nothing to do
-     }%
-}
+\foreach \y in {2018,2019,2020}{%
+    \foreach \m in {01,02,03,04,05,06,07,08,09,10,11,12}{%
+        \foreach \d in   {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}    {%
+            \IfFileExists{sections/\y-\m-\d} {%
+                \input{sections/\y-\m-\d}%
+            }{%
+                    % files does not exist, so nothing to do
+            }%
+        }%
+    }%
+}%
+
 
 \end{document}
