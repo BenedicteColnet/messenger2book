@@ -22,8 +22,8 @@ def add_timing_to_df(concatenated_table):
         lambda x: x.strftime("%H:%M"))
 
     # add boolean colum specifying who is the "right" (as opposed to "left") sender
-    right_sender = "M"  # Hard coded for Marc
-    concatenated_table['right'] = (
+    right_sender = "Alexandre Hannebelle"  # Hard coded for Marc
+    concatenated_table['right'] = (print(concatenated_table['sender']) or
         concatenated_table['sender'] == right_sender)
 
     # add sender group id column (on a given date, helper column to handle consecutive messages by the same sender)
