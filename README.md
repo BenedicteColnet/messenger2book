@@ -29,7 +29,7 @@ First, go on your Facebook account and download your messages and pictures. It c
 +-- stickers_used
 
 
-Note the name of the folder with the messages you are interested in. Typically it can contain gifs, photos, videos, audio and one - or several (😉) - `json` files. It contains the messages in questions. Please, don't touch anything from this folder, and just keep note off the name of the folder and the path.
+Note the name of the folder with the messages you are interested in. Typically it can contain gifs, photos, videos, audio and one - or several (😉) - `json` files. It contains the messages in questions. Please, don't touch anything from this folder, and just keep note of the name of the folder and the path.
 
 
 ## Telegram 
@@ -46,7 +46,7 @@ Telegram allows you to download your messages per conversation. Be careful to ex
 
 +-- video_files
 
-Please, don't touch anything from this folder, and just keep note off the name of the folder and the path.
+Please, don't touch anything from this folder, and just keep note of the name of the folder and the path.
 
 # Second: launch the script
 
