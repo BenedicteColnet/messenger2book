@@ -18,6 +18,8 @@ __PS1: feel free to contribute, add features, ⭐️ it, and/or share it!__
 
 __PS2: I did this project on my free time and super quickly. I opened it because friends asked me to. So please, be gentle with the current features and code quality 🙈__
 
+__Credits: Thank you Basile for the inspiration (you can have a look to his wonderful [blog](https://ntag.fr/)), and Alexandre and Maud for the Christmas sprint we did for this gift!__
+
 # Background
 
 To launch the code you will require python3 and Latex (in fact, xelatex). Be sure to have it installed on your computer. To be honest, you will probably need to have a little knowledge in both of these tools to complete your book, but it is very easy to find documentations online.
@@ -87,3 +89,4 @@ Compile the `.tex` files into youf `.pdf` book! (using `Xelatex`)
 
 
 Now, you can print it! 🎉
+
