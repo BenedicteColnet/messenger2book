@@ -1,3 +1,5 @@
+# Messenger 2 Book
+
 This code will allow you to make a book (📔 pdf) from your messenger and telegram messages.
 
 You can find explanations to use the code step by step. You can also read the post HERE. 
@@ -11,8 +13,9 @@ __PS2: I did this project on my free time and super quickly. I opened it because
 
 To launch the code you will require python3 and Latex (in fact, xelatex). Be sure to have it installed on your computer. To be honest, you will probably need to have a little knowledge in both of these tools to complete your book, but it is very easy to find documentations online.
 
-Toy data are available in this repository, and before doing your own book, please be sure that the command line `python main.py` is working. It should produce the `.tex` files in the section part. 
-Then, open the document `template.tex` and compile it with `Xelatex`. Normally it whould produce a toy example. Note that you can custom the `template.tex` to change the color, the font, of your document.
+First, `clone` this repository.
+
+Toy data are available in this repository, and before doing your own book, please be sure that the command line `python main.py` is working. It should produce the `.tex` files in the section part. Then, open the document `template.tex` and compile it with `xelatex`. Normally it whould produce a toy example. Note that you can custom the `template.tex` to change the color, the font, of your document.
 
 # Download your data
 
