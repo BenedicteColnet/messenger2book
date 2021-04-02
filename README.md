@@ -1,10 +1,18 @@
 # Messenger 2 Book
 
-This code will allow you to make a book (📔 pdf) from your messenger and telegram messages.
+__This code will allow you to make a book (📔 pdf) from your messenger and telegram messages!__
 
-You can find explanations to use the code step by step. You can also read the post HERE. 
+Have you already wanted to make a book from your private messages (Messenger, Telegram, Whatsapp, SMS)? In fact, we are more and more using such messages, could it be for a casual talk "Do we meet here?", but you've probably noticed that these messages also support feelings, jokes, and sometimes big discussions about life. These messages probably replaced the letters some people were used to send to their friends and beloved. This is why, having these messages on a material form - a book for example - is temptating! And I think it is a wonderful gift 🎁
 
-Enjoy!
+In reality this idea is already developed, for example some companies propose to transform your messages into a book, and you can find several of them if you google it. Still, what they offer is usually with a fixed layout, and without customization. In addition, the style they propose is so that it looks like a photo book, rather than a novel or a book.
+
+But some people developed their solutions, as you can find with Pelle Beckman [article]([https://medium.com/@pbeck/whatsapp-books-a-hacker-s-guide-edbb397e0bee](https://medium.com/@pbeck/whatsapp-books-a-hacker-s-guide-edbb397e0bee)) or Basile Bruneau's [article]([https://ntag.fr/a-book-from-messenger/](https://ntag.fr/a-book-from-messenger/)). The latter is really nice at it gathers several data sources: SMS, messenger, other. 
+
+In this repository, I just want to propose a solution that works for Messenger and Telegram messages, and transform them into a book. It uses `python` to process the data from Messenger and/or Telegram, and transform them into a `.tex` file. Then, `latex` is used to produce a book.
+
+Normally you can find everything you need here, but feel free to launch an issue.
+
+Enjoy! 🎊
 
 __PS1: feel free to contribute, add features, ⭐️ it, and/or share it!__
 
