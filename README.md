@@ -2,6 +2,8 @@
 
 __This code will allow you to make a book (📔 pdf) from your messenger and telegram messages!__
 
+⚠️ For now this code was only used by me and a friend. I cleaned it a bit so that everyone can use it. But I am open to all feedbacks and comments to improve the user experience. Also feel free to contribute 😇
+
 Have you already wanted to make a book from your private messages (Messenger, Telegram, Whatsapp, SMS)? In fact, we are more and more using such messages, could it be for a casual talk "Do we meet here?", but you've probably noticed that these messages also support feelings, jokes, and sometimes big discussions about life. These messages probably replaced the letters some people were used to send to their friends and beloved. This is why, having these messages on a material form - a book for example - is temptating! And I think it is a wonderful gift 🎁
 
 In reality this idea is already developed, for example some companies propose to transform your messages into a book, and you can find several of them if you google it. Still, what they offer is usually with a fixed layout, and without customization. In addition, the style they propose is so that it looks like a photo book, rather than a novel or a book.
