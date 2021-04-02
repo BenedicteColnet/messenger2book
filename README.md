@@ -7,7 +7,8 @@ You can find explanations to use the code step by step. You can also read the po
 Enjoy!
 
 __PS1: feel free to contribute, add features, ⭐️ it, and/or share it!__
-__PS2: I did this project on my free time and super quickly. I opened it because friends asked me to. So please, be gentle with the current features and code quality 🙈 __
+
+__PS2: I did this project on my free time and super quickly. I opened it because friends asked me to. So please, be gentle with the current features and code quality 🙈__
 
 # Background
 
