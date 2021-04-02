@@ -6,7 +6,7 @@ Have you already wanted to make a book from your private messages (Messenger, Te
 
 In reality this idea is already developed, for example some companies propose to transform your messages into a book, and you can find several of them if you google it. Still, what they offer is usually with a fixed layout, and without customization. In addition, the style they propose is so that it looks like a photo book, rather than a novel or a book.
 
-But some people developed their solutions, as you can find with Pelle Beckman [article](https://medium.com/@pbeck/whatsapp-books-a-hacker-s-guide-edbb397e0bee) or Basile Bruneau's [article](https://ntag.fr/a-book-from-messenger/). The latter is really nice at it gathers several data sources: SMS, messenger, other. 
+But some people developed their solutions, as you can find with Pelle Beckman [article](https://medium.com/@pbeck/whatsapp-books-a-hacker-s-guide-edbb397e0bee) or Basile Bruneau's [article](https://ntag.fr/a-book-from-messenger/). The latter is really nice as it gathers several data sources: SMS, messenger, other. 
 
 In this repository, I just want to propose a solution that works for Messenger and Telegram messages, and transform them into a book. It uses `python` to process the data from Messenger and/or Telegram, and transform them into a `.tex` file. Then, `latex` is used to produce a book.
 
