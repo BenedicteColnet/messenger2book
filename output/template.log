@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.11.22)  2 APR 2021 20:36
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.11.22)  2 APR 2021 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -780,10 +780,6 @@ s
 \f@nch@O@olf=\skip63
 \f@nch@O@orf=\skip64
 )
-
-LaTeX Warning: Unused global option(s):
-    [13pt].
-
 (./template.aux)
 \openout1 = `template.aux'.
 
@@ -905,44 +901,26 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(./sections/2020-06-16.tex) (./sections/2020-06-17.tex
-File: ios/1F60D.png Graphic file (type bmp)
-<ios/1F60D.png>
-File: ios/1F60D.png Graphic file (type bmp)
-<ios/1F60D.png>
-)
-(./sections/2020-07-07.tex
-File: ios/1F682.png Graphic file (type bmp)
-<ios/1F682.png>
-File: ios/1F682.png Graphic file (type bmp)
-<ios/1F682.png>
-File: ios/1F62C.png Graphic file (type bmp)
-<ios/1F62C.png>
-File: ios/1F682.png Graphic file (type bmp)
-<ios/1F682.png>
-File: ios/1F682.png Graphic file (type bmp)
-<ios/1F682.png>
-) (./sections/2020-11-12.tex [1
-
-]
+(./sections/2020-11-12.tex
 File: ../data/messenger/photos/125222477_1727067340807430_6855689147600839821_n
 .png Graphic file (type bmp)
 <../data/messenger/photos/125222477_1727067340807430_6855689147600839821_n.png>
 
-)
-(./sections/2020-11-13.tex
+) (./sections/2020-11-13.tex
 File: ios/1F929.png Graphic file (type bmp)
 <ios/1F929.png>
 File: ios/1F624.png Graphic file (type bmp)
 <ios/1F624.png>
- [2]) [3] (./template.aux) ) 
-Here is how much of TeX's memory you used:
- 20902 strings out of 479418
- 480042 string characters out of 5884584
- 817081 words of memory out of 5000000
- 37959 multiletter control sequences out of 15000+600000
- 532872 words of font info for 36 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 59i,11n,95p,1611b,637s stack positions out of 5000i,500n,10000p,200000b,80000s
+) [1
 
-Output written on template.pdf (3 pages).
+] (./template.aux) ) 
+Here is how much of TeX's memory you used:
+ 22916 strings out of 479418
+ 509181 string characters out of 5884584
+ 817390 words of memory out of 5000000
+ 38961 multiletter control sequences out of 15000+600000
+ 532864 words of font info for 35 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 59i,11n,95p,830b,703s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on template.pdf (1 page).

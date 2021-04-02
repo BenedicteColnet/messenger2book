@@ -34,7 +34,6 @@ def listdir_nohidden(path):
 def proces_gif_and_videos_messenger():
 
 	new_directory_gifs = DATA_PATH+'gifs_as_frame'
-	print(new_directory_gifs)
 	if not os.path.exists(new_directory_gifs):
 		os.makedirs(new_directory_gifs)
 

@@ -124,30 +124,18 @@
 
 \begin{document}
 
-
 \foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
-	\IfFileExists{sections/2020-06-\d}{
-		\input{sections/2020-06-\d}%
-	}{
-           % files does not exist, so nothing to do
-     }%
-}
-
-\foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
-	\IfFileExists{sections/2020-07-\d}{
-		\input{sections/2020-07-\d}%
-	}{
-           % files does not exist, so nothing to do
-     }%
-}
+  \foreach \m in 
+  {01,02,03,04,05,06,07,08,09,10,11,12}{
+    \foreach \y in 
+    {2017, 2018, 2019, 2020, 2021}{
+  \IfFileExists{sections/\y-\m-\d}{
+    \input{sections/\y-\m-\d}%
+      }
+    }{}
+  }{}
+}{}
 
 
-\foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
-	\IfFileExists{sections/2020-11-\d}{
-		\input{sections/2020-11-\d}%
-	}{
-           % files does not exist, so nothing to do
-     }%
-}
 
 \end{document}

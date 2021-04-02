@@ -14,3 +14,9 @@ venv.bak/
 
 .DS_Store
 .ipynb_checkpoints/
+template.aux
+template.log
+template.pdf
+template.synctex.gz
+2020-11-12.tex
+2020-11-13.tex
