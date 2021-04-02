@@ -6,14 +6,14 @@ from src.models import BaseChatAppModel
 from src.utils.formatting import process_for_latex
 
 TELEGRAM_PHOTOS_FOLDER = "../data/telegram/ChatExport_2020-12-06/"
-MAX_NUMBER_MESSAGE = 100000000
+MAX_NUMBER_MESSAGE = 10000000 
 
 class TelegramModel(BaseChatAppModel):
     def _load_data(self, data_path):
         """Opens and reads the specified file in the chat app native format."""
         return pd.read_json(data_path)
 
-    def _pre_process(self, raw_data):
+    def _pre_process(self, raw_data, me, my_friend):
         """Reformats the data from native chat app format to standardized format."""
         concatenated_table = {'source': [],  # telegram or messenger (string)
                               'datetime': [],  # date (string)
@@ -26,9 +26,9 @@ class TelegramModel(BaseChatAppModel):
         # Deal with telegram messages
         for element in raw_data["messages"][1:MAX_NUMBER_MESSAGE]: 
             # simplify sender
-            if element["from"] == 'Marc Negre':
+            if element["from"] == my_friend:
                 sender = "M"
-            elif element["from"] == 'Bénédicte Colnet':
+            elif element["from"] == me:
                 sender = "B"
             else:
                 print("Error on sender on message number "+str(element))
@@ -51,7 +51,7 @@ class TelegramModel(BaseChatAppModel):
                         continue
                     else:
                      gifs.append(TELEGRAM_PHOTOS_FOLDER + thumbnail_name)
-                     print(TELEGRAM_PHOTOS_FOLDER + element["thumbnail"])
+                     #print(TELEGRAM_PHOTOS_FOLDER + element["thumbnail"])
 
             videos = []
 
@@ -96,6 +96,9 @@ class TelegramModel(BaseChatAppModel):
 
             # deal with $
             text= text.replace('$', '\\$', 30)
+
+            # deal with [...]
+            text= text.replace('[...]', '...', 30)
             
             # deal with ^ 
             text= text.replace('^^', '$\wedge$ $\wedge$', 30)

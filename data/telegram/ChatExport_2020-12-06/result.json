@@ -1,0 +1,67 @@
+{
+ "name": "My friend",
+ "type": "personal_chat",
+ "id": 4957211864,
+ "messages": [
+  {
+   "id": 591901,
+   "type": "service",
+   "date": "2019-02-26T08:21:18",
+   "actor": "Me",
+   "actor_id": 4957211864,
+   "action": "joined_telegram",
+   "text": ""
+  },
+  {
+   "id": 676785,
+   "type": "message",
+   "date": "2020-06-16T18:06:17",
+   "from": "My friend",
+   "from_id": 4957211864,
+   "text": "So cute!"
+  },
+  {
+   "id": 676917,
+   "type": "message",
+   "date": "2020-06-17T09:19:55",
+   "from": "My friend",
+   "from_id": 4957211864,
+   "text": "I am so happy to see you tomorrow! Can't wait 😍😍"
+  },
+  {
+   "id": 679644,
+   "type": "message",
+   "date": "2020-07-07T15:54:05",
+   "from": "Me",
+   "from_id": 4555368440,
+   "forwarded_from": "Another friend",
+   "text": [
+    "Du coup si on résume : \n* 🚂 Départ J-0 à 20h50 de Paris Austerlitz par le train de nuit\n* 🚂 Arrivée J-1 à 8h22 à Briançon\n* Étape J-1 :\n    - ",
+    {
+     "type": "link",
+     "text": "https://ignrando.fr/fr/parcours/fiche/details/id/962809/"
+    },
+    "\n    - Marche d'approche/entrée dans le Queyras : ça monte ça monte ça monte, puis on redescend dans la vallée ou on fait dodo\n    - Peut être raccourcie de 2-3 km et 500m de D- en remplaçant camping par bivouac\n* Étape J-2 :\n    - ",
+    {
+     "type": "link",
+     "text": "https://ignrando.fr/fr/parcours/fiche/details/id/985873/"
+    },
+    "\n    - Quasi boucle au dessus de la vallée d'Arvieux, on monte voir l'alpage et on redescend vers le bivouac dans la vallée\n    - Bivouac pas loin d'un village\n    - Étape plutôt facile,  surtout si on raccourci le J-1\n* Étape J-3 :\n    - ",
+    {
+     "type": "link",
+     "text": "https://ignrando.fr/fr/parcours/fiche/details/id/989589/"
+    },
+    "\n    - On monte voir un lac d'altitude, puis on descend dormir à côté de Chateau Queyras.\n    - Probablement la plus grosse étape (couplée au courbatures des 2 premiers jours ça va être rigolo 😬)\n    - Camping à Chateau Queyras\n* Étape J-4 :\n    - ",
+    {
+     "type": "link",
+     "text": "https://ignrando.fr/fr/parcours/fiche/details/id/989597/"
+    },
+    "\n    - Ça monte/ça descend/ça remonte. Bivouac dans un alpage d'altitude.\n    - Plus gros D+ du parcours, coupé en 2 (+500 puis +1000)\n* Étape J-5 :\n    - ",
+    {
+     "type": "link",
+     "text": "https://ignrando.fr/fr/parcours/fiche/details/id/989605/"
+    },
+    "\n    - On a beaucoup monté la veille, on redescend tout pour arriver à la gare\n    - Arrivée Gare de Montdauphin-Guillestre\n* 🚂 Départ J-5 à 20h36 de la gare de Montdauphin-Guillestre\n* 🚂 Arrivée J-6 à 6h58 à Paris Austerlitz."
+   ]}
+  ]
+}

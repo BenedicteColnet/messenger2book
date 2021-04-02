@@ -1,0 +1,105 @@
+{
+  "participants": [
+    {
+      "name": "My friend"
+    },
+    {
+      "name": "Me"
+    }
+  ],
+  "messages": [
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605295602631,
+      "content": "SOOO HAPPY",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605295598528,
+      "content": "La publie de microbiologie est finale !! On va faire tourner \u00c3\u00a7a dans la bo\u00c3\u00aete",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605295581514,
+      "content": "ET",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605295580306,
+      "content": "Mais tout est pr\u00c3\u00aat.",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605295577204,
+      "content": "Juste savoir quelle affiliation",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605295568027,
+      "content": "\u00f0\u009f\u0098\u00a4",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605295564444,
+      "content": "Il manque un truc de un auteur",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605295557474,
+      "content": "Noooooon",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "My friend",
+      "timestamp_ms": 1605292155187,
+      "content": "Oh yeaaaah !!! Ca y est \u00c3\u00a7a y est ???",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605272089405,
+      "content": "*est",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605272085589,
+      "content": "\u00f0\u009f\u00a4\u00a9",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605272078426,
+      "content": "cet apres midi et l'apr\u00c3\u00a8s midi de ma premi\u00c3\u00a8re soumission sur archiv",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605272068054,
+      "content": "Ohlala",
+      "type": "Generic"
+    },
+    {
+      "sender_name": "Me",
+      "timestamp_ms": 1605196382729,
+      "photos": [
+        {
+          "uri": "https://interncache-atn.fbcdn.net/v/t1.15752-9/125222477_1727067340807430_6855689147600839821_n_1727067334140764.png?ccb=2&_nc_sid=73a6a0&efg=eyJ1cmxnZW4iOiJwaHBfdXJsZ2VuX2NsaWVudC9pbW9nZW46RFlJTWVkaWFVdGlscyJ9&_nc_ad=z-m&_nc_cid=0&_nc_ht=interncache-atn&oh=54adebd7bb72b88abfa5976648859ea3&oe=5FD625B5",
+          "creation_timestamp": 1605196378
+        }
+      ],
+      "type": "Generic"
+    }
+      ],
+  "title": "My friend",
+  "is_still_participant": true,
+  "thread_type": "Regular",
+  "thread_path": "inbox/marcnegre_hwizlpvhxw"
+}

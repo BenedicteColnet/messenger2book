@@ -18,7 +18,7 @@ class MessengerModel(BaseChatAppModel):
         with open(data_path, encoding='ascii') as f:
             return json.load(f)
 
-    def _pre_process(self, raw_data):
+    def _pre_process(self, raw_data, me, my_friend):
         """Reformats the data from native chat app format to standardized format."""
 
         # Faced issues with messenger, went on Chatistics repo and parse.py messenger
@@ -36,16 +36,16 @@ class MessengerModel(BaseChatAppModel):
         #raw_data_messenger = pd.read_json('messenger/inbox/marcnegre_hwizlpvhxw/message_1.json', lines=True)
         # raw_data_messenger.info()
         # raw_data_messenger.head()
-        for message in raw_data["messages"][0:900000000]:  # only 100 messages to test
+        for message in raw_data["messages"][0:900000000]:  # only 100 messages to test # 900000000
 
             timestamp = message["timestamp_ms"] / 1000
             timestamp = datetime.datetime.fromtimestamp(
                 timestamp).strftime('%Y-%m-%d %H:%M:%S.%f')
 
             sender = message["sender_name"]
-            if sender == "BÃ©nÃ©dicte Cnt":
+            if sender == me:
                 sender = 'B'
-            elif sender == "Marc Negre":
+            elif sender == my_friend:
                 sender = 'M'
             """
             else:
@@ -67,6 +67,8 @@ class MessengerModel(BaseChatAppModel):
             text = text.replace('&', '\\&')
             # deal with % in latex
             text = text.replace('%', '\\%')
+            # deal with [...]
+            text= text.replace('[...]', '...', 30)
             # deal with _
             text= text.replace('_', '\\_', 30)
             # deal with #
@@ -78,7 +80,7 @@ class MessengerModel(BaseChatAppModel):
             # deal with ^ 
             text= text.replace('^^', '$\wedge$ $\wedge$', 30)
             #deal with url
-            urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', text)
+            urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&#+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', text)
             for url in urls:
                 text = text.replace(url, "\\texttt{"+url[1:30]+"...}")
             # deal with emoji

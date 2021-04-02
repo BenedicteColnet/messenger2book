@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt,twoside]{book}
+\documentclass[a4paper, twoside]{book}
 \usepackage[many]{tcolorbox}
 \usepackage{xcolor}
 \usepackage{varwidth}
@@ -9,18 +9,20 @@
 
 \newlength{\bubblesep}
 \newlength{\bubblewidth}
-\setlength{\bubblesep}{0.01pt}
-\AtBeginDocument{\setlength{\bubblewidth}{.80\textwidth}}
+\setlength{\bubblesep}{0.4cm}
+\setlength{\bubblewidth}{0.4cm}
+\AtBeginDocument{\setlength{\bubblewidth}{.7\textwidth}}
+
+
+%small
+\setlength{\parskip}{0.5mm}
 
 % green is for right
 % gray for left
 % but I changed it
-%\definecolor{bubblegreen}{RGB}{103,184,104}
-%\definecolor{bubblegray}{RGB}{241,240,240}
-\definecolor{bubblegreen}{RGB}{229,252,252}
-\definecolor{bubblegray}{RGB}{231,239,239}
+\definecolor{bubblegreen}{RGB}{176,224,230}
+\definecolor{bubblegray}{RGB}{241,240,240}
 
-\usepackage[export]{adjustbox} % max height and width for image
 
 
 % hour
@@ -35,18 +37,13 @@
 
 % put date in margin
 \usepackage{marginnote} % finally not used
-\usepackage{geometry}
- \geometry{
- a4paper,
- total={170mm,257mm},
- left=20mm,
- top=20mm,
- }
+\usepackage[a4paper, margin=2cm, top=2.5cm, bottom=2.5cm]{geometry}
+
 
 \newcommand{\bubble}[4]{%
   \tcbox[
     on line,
-    arc=1.5mm,
+    arc=4.5mm,
     colback=#1,
     colframe=#1,
     #2,
@@ -70,7 +67,7 @@
    {
     \seq_pop_left:NN \l__ooker_bubbles_seq \l__ooker_bubbles_first_tl
     \seq_pop_right:NN \l__ooker_bubbles_seq \l__ooker_bubbles_last_tl
-    \bubble{bubblegreen}{sharp~corners=southeast}{black}{\l__ooker_bubbles_first_tl}
+    \bubble{bubblegreen}{sharp~corners=southeast}{white}{\l__ooker_bubbles_first_tl}
     \par\nointerlineskip
     \addvspace{\bubblesep}
     \seq_map_inline:Nn \l__ooker_bubbles_seq
@@ -127,20 +124,27 @@
 
 \begin{document}
 
-%\foreach \m in {01,02,03,04,05,06,07,08,09,10,11,12}{%
- %   \foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{%
-  %      \IfFileExists{sections/2020-\m-\d} {%
-   %     	\input{sections/2020-\m-\d}%
-    %    }{%
-     %           % files does not exist, so nothing to do
-      %  }%
-    %}%
-%}%
 
-%\foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
 \foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
-	\IfFileExists{sections/2020-03-\d}{
-		\input{sections/2020-03-\d}%
+	\IfFileExists{sections/2020-06-\d}{
+		\input{sections/2020-06-\d}%
+	}{
+           % files does not exist, so nothing to do
+     }%
+}
+
+\foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
+	\IfFileExists{sections/2020-07-\d}{
+		\input{sections/2020-07-\d}%
+	}{
+           % files does not exist, so nothing to do
+     }%
+}
+
+
+\foreach \d in {01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31}{
+	\IfFileExists{sections/2020-11-\d}{
+		\input{sections/2020-11-\d}%
 	}{
            % files does not exist, so nothing to do
      }%

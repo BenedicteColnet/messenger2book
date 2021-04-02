@@ -91,7 +91,7 @@
 }
 
 \newcommand{\@emojiimg}[2]{%
-  \raisebox{-0.1em}{\includegraphics[height=1.3em]{#1/#2.png}}%
+  \raisebox{-0.1em}{\includegraphics[height=1.2em]{#1/#2.png}}%
 }
 
 \newcommand{\@emojiimgtext}[2]{%
@@ -105,31 +105,31 @@
   %
   \ifx\b\empty%
     \BeginAccSupp{method=pdfstringdef,ActualText=\unichar{"\a},unicode,space}%
-      \raisebox{-0.1em}{\includegraphics[height=1.3em]{#1/#2.png}}%
+      \raisebox{-0.1em}{\includegraphics[height=1.2em]{#1/#2.png}}%
     \EndAccSupp{}%
   \else%
     \ifx\c\empty%
       \BeginAccSupp{method=pdfstringdef,ActualText=\unichar{"\a}\unichar{"\b},unicode,space}%
-        \raisebox{-0.1em}{\includegraphics[height=1.3em]{#1/#2.png}}%
+        \raisebox{-0.1em}{\includegraphics[height=1.2em]{#1/#2.png}}%
       \EndAccSupp{}%
     \else%
       \ifx\d\empty%
         \BeginAccSupp{method=pdfstringdef,ActualText=\unichar{"\a}\unichar{"\b}\unichar{"\c},unicode,space}%
-          \raisebox{-0.1em}{\includegraphics[height=1.3em]{#1/#2.png}}%
+          \raisebox{-0.1em}{\includegraphics[height=1.2em]{#1/#2.png}}%
         \EndAccSupp{}%
       \else%
         \ifx\e\empty%
           \BeginAccSupp{method=pdfstringdef,ActualText=\unichar{"\a}\unichar{"\b}\unichar{"\c}\unichar{"\d},unicode,space}%
-            \raisebox{-0.1em}{\includegraphics[height=1.3em]{#1/#2.png}}%
+            \raisebox{-0.1em}{\includegraphics[height=1.2em]{#1/#2.png}}%
           \EndAccSupp{}%
         \else%
           \ifx\f\empty%
             \BeginAccSupp{method=pdfstringdef,ActualText=\unichar{"\a}\unichar{"\b}\unichar{"\c}\unichar{"\d}\unichar{"\e},unicode,space}%
-              \raisebox{-0.1em}{\includegraphics[height=1.3em]{#1/#2.png}}%
+              \raisebox{-0.1em}{\includegraphics[height=1.2em]{#1/#2.png}}%
             \EndAccSupp{}%
           \else%
             \BeginAccSupp{method=pdfstringdef,ActualText=\unichar{"\a}\unichar{"\b}\unichar{"\c}\unichar{"\d}\unichar{"\e}\unichar{"\f},unicode,space}%
-              \raisebox{-0.1em}{\includegraphics[height=1.3em]{#1/#2.png}}%
+              \raisebox{-0.1em}{\includegraphics[height=1.2em]{#1/#2.png}}%
             \EndAccSupp{}%
           \fi%
         \fi%
